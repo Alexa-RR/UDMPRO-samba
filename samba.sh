@@ -43,10 +43,10 @@ fi
 
 CID=$(podman ps -all -q -f status=created -f name=samba)
 if [ ! "${CID}" ]; then
-  podman run --name ${container_name} -p 139:139 -p 445:445 -p 137:137/udp -p 138:138/udp -v "$FILE:/share:Z" -d dperson/samba -n -s "shared;/share;yes;no;yes;all;none;none;Shared files" -p -g "usershare allow guests = yes" -g "map to guest = bad user" -g "load printers = no" -g "printcap cache time = 0" -g "printing = bsd" -g "printcap name = /dev/null" -g "disable spoolss = yes"
+  podman run --name ${container_name} -p 139:139 -p 446:446 -p 137:137/udp -p 138:138/udp -v "$FILE:/share:Z" -d dperson/samba -n -s "shared;/share;yes;no;yes;all;none;none;Shared files" -p -g "usershare allow guests = yes" -g "map to guest = bad user" -g "load printers = no" -g "printcap cache time = 0" -g "printing = bsd" -g "printcap name = /dev/null" -g "disable spoolss = yes"
 else 
   podman rm $CID
-  podman run --name ${container_name} -p 139:139 -p 445:445 -p 137:137/udp -p 138:138/udp -v "$FILE:/share:Z" -d dperson/samba -n -s "shared;/share;yes;no;yes;all;none;none;Shared files" -p -g "usershare allow guests = yes" -g "map to guest = bad user" -g "load printers = no" -g "printcap cache time = 0" -g "printing = bsd" -g "printcap name = /dev/null" -g "disable spoolss = yes"
+  podman run --name ${container_name} -p 139:139 -p 446:446 -p 137:137/udp -p 138:138/udp -v "$FILE:/share:Z" -d dperson/samba -n -s "shared;/share;yes;no;yes;all;none;none;Shared files" -p -g "usershare allow guests = yes" -g "map to guest = bad user" -g "load printers = no" -g "printcap cache time = 0" -g "printing = bsd" -g "printcap name = /dev/null" -g "disable spoolss = yes"
 fi
 unset CID
 
